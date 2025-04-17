@@ -36,7 +36,7 @@ public class MainProgram {
         centerPanel.add(questionLabel);                              //zona dove verrando mandate le risposte
 
         //inizzializzazione southPanel ed i suoi componenti
-        centerPanel = new JPanel(new GridLayout(1,2));     //layout a griglia
+        southPanel = new JPanel(new GridLayout(1,2));     //layout a griglia
         yesButton = new JButton("SI");
         noButton = new JButton("NO");
 
