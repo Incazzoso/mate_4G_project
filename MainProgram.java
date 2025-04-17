@@ -30,7 +30,7 @@ public class MainProgram {
 
         //inizzializzazione centerPanel ed i suoi componenti
         centerPanel = new JPanel(new GridLayout(1,1));     //layout a griglia
-        questionLabel = new JLabel("");                         //label vuota
+        questionLabel = new JLabel("lorem ipsum lorem ipsum lorem ipsum");                         //label vuota
 
         //aggiunta elementi al centerPanel
         centerPanel.add(questionLabel);                              //zona dove verrando mandate le risposte
@@ -44,6 +44,10 @@ public class MainProgram {
         southPanel.add(yesButton);                                   //bottone si
         southPanel.add(noButton);                                    //bottone no
 
+
+        //aggiunte al frame
+        frame.add(centerPanel, BorderLayout.CENTER);
+        frame.add(southPanel, BorderLayout.SOUTH);
 
         //fine dei settings per il Frame
         frame.setVisible(true);                                    //window visibile
