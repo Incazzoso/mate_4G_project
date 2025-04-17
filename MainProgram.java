@@ -1,63 +1,74 @@
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 public class MainProgram {
+    JFrame frame;
+    JPanel centerPanel, southPanel;
+    JLabel questionLabel;
+    JButton yesButton, noButton;
+    DefaultMutableTreeNode currentPos;
+    QuestionTree questionTree;
 
-    //dichiarazioni
-    JFrame frame;           //il frame
-    JPanel northPanel;      //pannello nord
-    JPanel centerPanel;     //pannello centrale
-    JPanel southPanel;      //pannello sud
-    JLabel questionLabel;   //dove avvengono le domande
-    JButton yesButton;      //se alla domanda la risposta è si
-    JButton noButton;       //se alla domanda la risposta è no
-    JButton exitButton;     //se si vuole uscire dal programma
-    
+    public MainProgram() {
+        frame = new JFrame("Calcolo Combinatorio");
+        frame.setLayout(new BorderLayout());
+        frame.setSize(500, 700);
 
+        centerPanel = new JPanel(new GridLayout(1, 1));
+        questionLabel = new JLabel("Inizio");
+        centerPanel.add(questionLabel);
 
-    //costruttore (dove andrà tutto il codice)
-    MainProgram(){
-
-        //inizio dei settings per il Frame
-        frame = new JFrame("calcolo combinatorio");            //titolo al frame
-        frame.setLayout(new BorderLayout());                         //tipo di layout
-        frame.setSize(500, 700);                        //dimensione
-
-
-        //inizzializzazione centerPanel ed i suoi componenti
-        centerPanel = new JPanel(new GridLayout(1,1));     //layout a griglia
-        questionLabel = new JLabel("lorem ipsum lorem ipsum lorem ipsum");                         //label vuota
-
-        //aggiunta elementi al centerPanel
-        centerPanel.add(questionLabel);                              //zona dove verrando mandate le risposte
-
-        //inizzializzazione southPanel ed i suoi componenti
-        southPanel = new JPanel(new GridLayout(1,2));     //layout a griglia
-        yesButton = new JButton("SI");
+        southPanel = new JPanel(new GridLayout(1, 2));
+        yesButton = new JButton("SÌ");
         noButton = new JButton("NO");
+        southPanel.add(yesButton);
+        southPanel.add(noButton);
 
-        //aggiunta elementi al centerPanel
-        southPanel.add(yesButton);                                   //bottone si
-        southPanel.add(noButton);                                    //bottone no
-
-
-        //aggiunte al frame
         frame.add(centerPanel, BorderLayout.CENTER);
         frame.add(southPanel, BorderLayout.SOUTH);
 
-        //fine dei settings per il Frame
-        frame.setVisible(true);                                    //window visibile
-        frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);         //operazione di chiusura (esce quando lo si chiude)    
+        // Creazione dell'albero delle domande
+        questionTree = new QuestionTree();
+        currentPos = questionTree.getRoot();
+
+        // Aggiornamento iniziale del testo
+        questionLabel.setText(currentPos.toString());
+
+        // Azione sui bottoni
+        yesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                navigateTree(0); // Sposta il nodo alla prima opzione (SI)
+                //TODO: a seconda delle opzioni deve far apparire una nuova scheda che ti calcola le cose
+            }
+        });
+        
+        noButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                navigateTree(1); // Sposta il nodo alla seconda opzione (NO)
+                
+                //TODO: a seconda delle opzioni deve far apparire una nuova scheda che ti calcola le cose
+            }
+        });
+
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    // Metodo per navigare nell'albero
+    private void navigateTree(int childIndex) {
+        if (currentPos.getChildCount() > childIndex) {
+            currentPos = (DefaultMutableTreeNode) currentPos.getChildAt(childIndex);
+            questionLabel.setText(currentPos.toString());
+        }
+    }
 
-    //run del main (usato per evitare la creazione di una classe Mai.java che faceva partire il programma, rendendo il tutto più leggero)
     public static void main(String[] args) {
-        new MainProgram();      //inizzializzazionr istantanea (per evitare di istanziare un oggetto in più)
+        new MainProgram();
     }
 }
-
