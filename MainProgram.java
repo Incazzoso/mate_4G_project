@@ -1,21 +1,17 @@
-<<<<<<< HEAD
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-=======
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
->>>>>>> e1e3f305d3fae6540ec76e7f6caa1a1af73577d3
 
 public class MainProgram extends JFrame {
     // Domande per determinare il tipo di calcolo combinatorio
     String[] domande = {"n, k, h sono indistinguibili?", "L'ordine è importante?", "n = k?", "Gli elementi sono tutti diversi?"};
 
-<<<<<<< HEAD
     int step = 0;
     String formula = "";
 
