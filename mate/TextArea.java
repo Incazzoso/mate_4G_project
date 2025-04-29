@@ -1,9 +1,9 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class TextArea extends JPanel {
 
@@ -72,6 +72,8 @@ public class TextArea extends JPanel {
             add(label);
     
             JTextField campo = new JTextField();
+            campo.setBackground(new Color(181,101,29));
+            campo.setForeground(new Color(245,195,110));
             campo.setBounds(startX + larghezzaEtichetta + spazioTraCampoELabel, y, larghezzaCampo, altezzaCampo);
             campiInput.add(campo);
             add(campo);
