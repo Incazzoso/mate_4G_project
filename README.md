@@ -6,7 +6,7 @@ progetto di matematica sul calcolo combinatorio.
 CREATO DA:
   -Gabriele (gestione logica del calcolo aritmetico e creazione scheletro del progetto)
   -Iba  (interazioni e grafica completa)
-  -Igora  (collegamenti, gestione logica delle classi)
+  -Igor  (collegamenti, gestione logica delle classi)
 
 ------------------------------------------------------------------------------------------------
 
