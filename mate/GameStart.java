@@ -256,7 +256,7 @@ public class GameStart extends JPanel {
             }
 
             textArea.removeAll();
-            questionArea.setText("Ecco a te..");
+            questionArea.setText("Hai compiuto il tuo cammino. Che la magia delle combinazioni sia con te!");
             textArea.Risultato(risultato, () -> startFadeOutAndExitClose(),() -> ricominciaGioco());
         } catch (Exception e) {
             textArea.setText("Errore durante il calcolo. Verifica gli input.");
@@ -310,7 +310,7 @@ public class GameStart extends JPanel {
         questionArea.setText("Va bene.. E' stato bello finchè è durato!");
         cambiaSfondo();
         ritardaEsegui(2500, () ->questionArea.setText("Arrivederci! :D"));
-        ritardaEsegui(2000, () ->startFadeOutAndExit());
+        ritardaEsegui(4000, () ->startFadeOutAndExit());
     }
     
 
